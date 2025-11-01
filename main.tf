@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "6.16.0"
     }
   }
@@ -13,10 +13,12 @@ provider "aws" {
 }
 
 resource "aws_instance" "myserver" {
-  ami = "ami-0199d4b5b8b4fde0e"
+  ami           = "ami-0199d4b5b8b4fde0e"
   instance_type = "t3.micro"
 
   tags = {
     Name = "SampleServer"
   }
 }
+
+#This is just message
