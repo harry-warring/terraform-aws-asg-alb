@@ -16,7 +16,7 @@ provider "aws" {
 
 resource "aws_instance" "myserver" {
   ami                         = "ami-0e858a9b9fb8b4917"
-  instance_type               = "m7i-flex.large"
+  instance_type               = "t3.micro"
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.public_subnet.id
   vpc_security_group_ids      = [aws_security_group.instance.id]

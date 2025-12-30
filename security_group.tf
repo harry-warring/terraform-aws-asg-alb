@@ -10,6 +10,14 @@ resource "aws_security_group" "instance" {
     security_groups = [aws_security_group.sg_alb.id] # ALB to reach EC2
   }
 
+  ingress {
+    description = "SSH"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
