@@ -1,140 +1,107 @@
-AWS EC2 Monitoring & Alerting using Terraform
-📌 Project Overview
+# AWS Highly Available Infrastructure using Terraform
 
-This project demonstrates how to provision and monitor AWS infrastructure using Terraform.
-It focuses on deploying an EC2 instance and configuring Amazon CloudWatch to monitor CPU utilization and trigger alerts when thresholds are breached.
+## 📌 Project Overview
+This project provisions a highly available AWS infrastructure using Terraform.  
+It includes a VPC, EC2 instances behind an Application Load Balancer, Auto Scaling,  
+CloudWatch monitoring, and an S3 backend for remote state management.
 
-The goal of this project is to showcase Infrastructure as Code (IaC), cloud monitoring, and operational awareness, which are essential skills for Cloud, DevOps, and SRE roles.
+This project was built as part of hands-on learning to strengthen Terraform  
+and AWS architecture skills.
 
-🛠️ Technologies Used
+---
 
-Terraform
+## ⚙️ Technologies Used
+- Terraform
+- AWS EC2
+- Application Load Balancer
+- Auto Scaling Group
+- Amazon CloudWatch
+- Amazon S3 (Remote Backend)
 
-AWS EC2
+---
 
-Amazon CloudWatch
+## 🏗️ Architecture Components
+- **VPC** with networking configuration
+- **EC2 instances** launched using Auto Scaling
+- **Application Load Balancer** to distribute traffic
+- **Security Groups** for controlled access
+- **CloudWatch alarms** for monitoring EC2 metrics
+- **S3 backend** for Terraform remote state
 
-CloudWatch Alarms
+---
 
-IAM
+## 📂 Project Structure
+vpc.tf # VPC and networking
+security_group.tf # Security groups
+main.tf # Core infrastructure resources
+autoscaling.tf # Auto Scaling Group
+load_balancer.tf # Application Load Balancer
+cloud_watch.tf # CloudWatch alarms and monitoring
+s3_backend.tf # Terraform remote state backend
+s3_bucket.tf # S3 bucket for state storage
+user_data.sh # EC2 bootstrap script
+variables.tf # Input variables
+outputs.tf # Output values
+.terraform.lock.hcl # Terraform dependencies
+.gitignore # Ignored files
+README.md # Project documentation
 
-AWS CLI
+---
 
-🏗️ Architecture
-
-Terraform provisions:
-
-EC2 instance
-
-Security Group
-
-IAM role (for CloudWatch access)
-
-CloudWatch alarm
-
-CloudWatch monitors:
-
-EC2 CPU Utilization
-
-Alarm triggers when CPU usage exceeds a defined threshold
-
-📂 Project Structure
-.
-├── provider.tf          # AWS provider configuration
-├── variables.tf         # Input variables
-├── main.tf              # EC2 and Security Group resources
-├── cloudwatch.tf        # CloudWatch alarms and metrics
-├── outputs.tf           # Output values
-└── README.md            # Project documentation
-
-⚙️ Prerequisites
-
-Before running this project, ensure you have:
-
-An AWS account
-
-AWS CLI configured
-
-Terraform installed
-
-IAM user/role with required permissions
-
-Verify installations:
-
-terraform --version
-aws --version
-
-🚀 How to Deploy
-
-Clone the repository:
-
+## 🚀 How to Deploy
+1. Clone the repository:
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
-
-
 Initialize Terraform:
 
 terraform init
-
-
 Review the execution plan:
 
 terraform plan
-
-
 Apply the configuration:
 
 terraform apply
+Confirm deployment by checking AWS console:
 
+EC2 instances
 
-Confirm deployment by checking:
+CloudWatch alarms
 
-EC2 instance in AWS Console
+Load Balancer
 
-CloudWatch alarms under CloudWatch → Alarms
+Auto Scaling group
 
-📊 Monitoring Details
+📊 Monitoring
+CloudWatch monitors EC2 metrics such as CPU utilization
 
-Metric: CPUUtilization
+Alarms are configured to trigger when thresholds are exceeded
 
-Threshold: Configurable (example: >70%)
+Tested using EC2 workload to validate alarm triggers
 
-Evaluation Period: Defined in Terraform
-
-Action: CloudWatch alarm triggers when threshold is breached
-
-🧹 Cleanup Resources
-
-To avoid unnecessary AWS charges:
-
+🧹 Cleanup
+To avoid AWS charges:
 terraform destroy
 
 🎯 Key Learnings
+Designing highly available AWS architectures
 
-Writing modular and reusable Terraform code
+Using Auto Scaling and Load Balancers
 
-Implementing monitoring using CloudWatch
+Implementing monitoring with CloudWatch
 
-Understanding EC2 performance metrics
+Managing Terraform state using S3 backend
 
-Following best practices for IaC
+Structuring Terraform projects using multiple files
 
-📌 Future Enhancements
+🔮 Future Improvements
 
-Add SNS notifications (Email alerts)
+Use Terraform modules for better reusability
 
-Monitor additional metrics (Memory, Disk)
+Add HTTPS using AWS ACM
 
-Auto Scaling Group integration
-
-Convert into a reusable Terraform module
+Integrate with CI/CD pipeline for automated deployments
 
 👤 Author
-
 Harjinder Singh Warring
-
 AWS Certified Solutions Architect – Associate
-
 CompTIA Security+
-
-Cloud & DevOps Enthusiast
