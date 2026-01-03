@@ -1,4 +1,4 @@
-/*
+
 terraform {
   backend "s3" {
     bucket = "back-end-state-bucket-1"
@@ -9,4 +9,4 @@ terraform {
     encrypt        = true
   }
 }
-*/
+
